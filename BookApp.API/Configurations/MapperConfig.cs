@@ -2,6 +2,7 @@
 using BookApp.API.Data;
 using BookApp.API.Models.Author;
 using BookApp.API.Models.Book;
+using BookApp.API.Models.User;
 
 namespace BookApp.API.Configurations
 {
@@ -24,6 +25,7 @@ namespace BookApp.API.Configurations
                 .ReverseMap();
 
 
+            CreateMap<ApiUser, UserDto>().ReverseMap();
         }
     }
 }
