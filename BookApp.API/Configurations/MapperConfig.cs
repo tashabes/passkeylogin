@@ -25,7 +25,6 @@ namespace BookApp.API.Configurations
                 .ForMember(q => q.AuthorName, d => d.MapFrom(map => $"{map.Author.FirstName} {map.Author.LastName}"))
                 .ReverseMap();
 
-
             CreateMap<ApiUser, UserDto>().ReverseMap();
         }
     }

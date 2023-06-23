@@ -14,7 +14,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
 using BookApp.API.Data;
 
-namespace BookStoreApp.API.Controllers
+namespace BookApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

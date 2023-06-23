@@ -6,9 +6,9 @@
 
 @if (string.IsNullOrEmpty(message) == false)
 {
-    <div class="alert alert-danger">
-        <p>@message</p>
-    </div>
+        <div class="alert alert-danger">
+            <p>@message</p>
+        </div>
 }
 <div>
     <EditForm Model="RegistrationModel" OnValidSubmit="HandleRegistration">
@@ -19,25 +19,25 @@
             <InputText class="form-control" @bind-Value="RegistrationModel.Email" />
             <ValidationMessage For="@(() => RegistrationModel.Email)" />
         </div>
-        <br />
+        <br/>
         <div class="form-group">
             <label for="email">First Name</label>
             <InputText class="form-control" @bind-Value="RegistrationModel.FirstName" />
             <ValidationMessage For="@(() => RegistrationModel.FirstName)" />
         </div>
-        <br />
+        <br/>
         <div class="form-group">
             <label for="email">Last Name</label>
             <InputText class="form-control" @bind-Value="RegistrationModel.LastName" />
             <ValidationMessage For="@(() => RegistrationModel.LastName)" />
         </div>
-        <br />
+        <br/>
         <div class="form-group">
             <label for="email">Password</label>
             <InputText class="form-control" type="password" @bind-Value="RegistrationModel.Password" />
             <ValidationMessage For="@(() => RegistrationModel.Password)" />
         </div>
-        <br />
+        <br/>
         <button type="submit" class="btn btn-primary btn-block">Register</button>
 
 

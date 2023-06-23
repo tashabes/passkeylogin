@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using BookApp.API.Data;
-using BookApp.API.Models.User;
 using BookApp.API.Static;
-using BookApp.API.Data;
 using BookApp.API.Models.User;
-using BookApp.API.Static;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -14,7 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BookApp.API.Controllers
+namespace BookStoreApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

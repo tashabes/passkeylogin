@@ -10,12 +10,12 @@ using BookApp.API.Models.Author;
 using AutoMapper;
 using System.Collections;
 using BookApp.API.Static;
-using BookApp.API.Data;
-using BookApp.API.Models.Author;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper.QueryableExtensions;
+using BookApp.API.Data;
+using BookApp.API.Static;
 
-namespace BookStoreApp.API.Controllers
+namespace BookApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -67,7 +67,6 @@ namespace BookStoreApp.API.Controllers
                     return NotFound();
                 }
 
-          
                 return Ok(author);
             }
             catch (Exception ex)
