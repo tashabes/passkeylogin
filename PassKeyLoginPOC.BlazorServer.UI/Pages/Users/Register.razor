@@ -1,0 +1,71 @@
+﻿@page "/users/register"
+@inject IClient httpClient
+@inject NavigationManager navManager
+
+
+<h3>Register</h3>
+
+@if (string.IsNullOrEmpty(message) == false)
+{
+    <div class="alert alert-danger">
+        <p>@message</p>
+    </div>
+} 
+
+    <EditForm Model="RegistrationModel" OnValidSubmit="HandleRegistration">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+            <label for="name">Name</label>
+            <InputText class="form-control" @bind-Value="RegistrationModel.Name" />
+            <ValidationMessage For="@(() => RegistrationModel.Name)" />
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="phoneNumber">PhoneNumber</label>
+            <InputText class="form-control" @bind-Value="RegistrationModel.PhoneNumber" />
+            <ValidationMessage For="@(() => RegistrationModel.PhoneNumber)" />
+        </div>
+
+
+
+    <br />
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+
+    </EditForm>
+
+
+
+@code {
+  
+    
+    UserCreateDto RegistrationModel = new UserCreateDto
+        {
+            MachineName = System.Environment.MachineName
+        };
+
+    string message = string.Empty;
+
+    private async Task HandleRegistration()
+    {
+
+        try
+        {
+            await httpClient.UsersPOSTAsync(RegistrationModel);
+            navManager.NavigateTo("/welcome");
+
+        } catch(ApiException ex)
+        {
+            if(ex.StatusCode >= 200 && ex.StatusCode <= 299)
+            {
+                navManager.NavigateTo("/welcome");
+            }
+            message = ex.Message;
+        } 
+
+}
+}
+
+
+

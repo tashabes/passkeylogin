@@ -1,0 +1,39 @@
+﻿@page "/"
+@inject IClient httpClient
+@inject NavigationManager navManager
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello @DeviceId</h1>
+
+
+
+
+@code {
+    private string DeviceId => System.Environment.MachineName;
+    string message = string.Empty;
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            var user = await httpClient.UsersGETAsync(DeviceId);
+            if (user.MachineName != null)
+            {
+                navManager.NavigateTo("/welcome");
+            }
+
+        }
+        catch (ApiException ex)
+        {
+            if (ex.StatusCode > 299)
+            {
+                navManager.NavigateTo("/users/register");
+            }
+            message = ex.Message;
+        }
+
+    }
+
+}
+
